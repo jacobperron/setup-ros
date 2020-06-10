@@ -41,6 +41,7 @@ async function prepareRos2BuildEnvironment() {
 	);
 
 	core.addPath("c:\\program files\\cppcheck");
+	await chocolatey.upgradeChocoPackages(["all"]);
 	await chocolatey.installChocoDependencies();
 	await chocolatey.downloadAndInstallRos2NugetPackages();
 	await pip.installPython3Dependencies(false);

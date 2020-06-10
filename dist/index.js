@@ -3725,6 +3725,7 @@ function prepareRos2BuildEnvironment() {
             },
         });
         core.addPath("c:\\program files\\cppcheck");
+        yield chocolatey.upgradeChocoPackages(["all"]);
         yield chocolatey.installChocoDependencies();
         yield chocolatey.downloadAndInstallRos2NugetPackages();
         yield pip.installPython3Dependencies(false);
@@ -4132,7 +4133,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.downloadAndInstallRos2NugetPackages = exports.installChocoDependencies = exports.runChocoInstall = void 0;
+exports.downloadAndInstallRos2NugetPackages = exports.installChocoDependencies = exports.runChocoInstall = exports.upgradeChocoPackages = void 0;
 const utils = __importStar(__webpack_require__(163));
 const chocoCommandLine = ["install", "--no-progress", "--yes"];
 const chocoDependencies = ["cppcheck", "wget", "7zip"];
@@ -4152,6 +4153,18 @@ const ros2ChocolateyPackages = [
     "tinyxml-usestl",
     "tinyxml2",
 ];
+/**
+ * Upgrade Chocolatey packages.
+ *
+ * @param packages          list of Chocolatey packages to upgrade
+ * @returns Promise<number> exit code
+ */
+function upgradeChocoPackages(packages) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return utils.exec("choco", ["upgrade", "--yes"].concat(packages));
+    });
+}
+exports.upgradeChocoPackages = upgradeChocoPackages;
 /**
  * Run choco install on the list of specified packages.
  *

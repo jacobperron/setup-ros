@@ -22,6 +22,16 @@ const ros2ChocolateyPackages: string[] = [
 ];
 
 /**
+ * Upgrade Chocolatey packages.
+ *
+ * @param packages          list of Chocolatey packages to upgrade
+ * @returns Promise<number> exit code
+ */
+export async function upgradeChocoPackages(packages: string[]): Promise<number> {
+	return utils.exec("choco", ["upgrade", "--yes"].concat(packages));
+}
+
+/**
  * Run choco install on the list of specified packages.
  *
  * @param   packages        list of Chocolatey pacakges to be installed
