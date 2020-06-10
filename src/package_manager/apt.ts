@@ -68,7 +68,7 @@ const distributionSpecificAptDependencies = {
  * This package would normally be installed automatically by rosdep, but
  * there is no way to pass RTI_NC_LICENSE_ACCEPTED through rosdep.
  *
- * @param   packages        list of Debian pacakges to be installed
+ * @param   packages        list of Debian packages to be installed
  * @returns Promise<number> exit code
  */
 export async function runAptGetInstall(packages: string[]): Promise<number> {

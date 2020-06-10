@@ -24,7 +24,7 @@ const ros2ChocolateyPackages: string[] = [
 /**
  * Run choco install on the list of specified packages.
  *
- * @param   packages        list of Chocolatey pacakges to be installed
+ * @param   packages        list of Chocolatey packages to be installed
  * @returns Promise<number> exit code
  */
 export async function runChocoInstall(packages: string[]): Promise<number> {
